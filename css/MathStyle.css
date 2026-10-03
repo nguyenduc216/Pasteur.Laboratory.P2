@@ -1,0 +1,68 @@
+﻿.math-control-box {
+    width: 315px;
+    height: 35px;
+    border: solid 1px #712d94;
+    
+    -webkit-box-shadow: 0px 4px 15px -3px rgba(0,0,0,0.64);
+    box-shadow: 0px 4px 15px -3px rgba(0,0,0,0.64);
+    background-color: white;
+    position: fixed;
+    z-index: 2021;
+    top: 50%;
+    left: 50%;
+    display: none;
+}
+
+.math-outer.open-math-box .math-control-box {
+    position: absolute;
+    top: unset;
+    bottom: -35px;
+    left: unset;
+    right: 0px;
+    display: block;
+    width: 100%;
+    background-color: #712d94;
+}
+
+
+.math-control-button {
+    width: 22px;
+    height: 24px;
+    border: solid 1px #d980e0;
+    background-color: rgba(138, 0, 165, 0.64);
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    margin: 3px;
+    font-size: 10px;
+    border-radius: 4px;
+    float: right;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .math-control-button.close-button {
+        background-color: #c71111;
+        border-color: white;
+    }
+
+    .math-control-button:hover {
+        background-color: #8f12c8;
+        color: white;
+        text-underline-position: unset;
+    }
+
+    .math-control-button:active {
+        background-color: #671a6d;
+        transform: scale(0.7);
+    }
+
+.math-underline {
+    text-decoration: underline;
+    margin: 0px;
+    font-weight: normal;
+}

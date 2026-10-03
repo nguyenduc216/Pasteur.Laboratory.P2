@@ -1,0 +1,26 @@
+﻿.search-tag {
+    float: left;
+    width: auto;
+}
+
+
+    .search-tag .form-control {
+        display: inline-block !important;
+        width:auto !important;
+    }
+
+    .search-tag .input-group-addon {
+        display: inline-block !important;
+    }
+
+        .search-tag .input-group-addon i.fa-times::before {
+            left: -9px;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: -9px;
+        }
+
+    .search-tag + .search-tag {
+        margin-left:5px;
+    }

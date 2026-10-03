@@ -1,0 +1,761 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42FE6055-B68F-4A7F-96F6-5BEA08218603}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pasteur.Laboratory</RootNamespace>
+    <AssemblyName>Pasteur.Laboratory</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44344</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\Paster.Material\DLL\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\Paster.Material\DLL\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\Paster.Material\DLL\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 11.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Paster.Material\DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SubSonic">
+      <HintPath>..\Paster.Material\DLL\SubSonic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="403.aspx" />
+    <Content Include="Building.aspx" />
+    <Content Include="404.aspx" />
+    <Content Include="CatThongTu.aspx" />
+    <Content Include="CatChungChi.aspx" />
+    <Content Include="CatLoaiHinhYeuCau.aspx" />
+    <Content Include="CatChiTieuGioiHan.aspx" />
+    <Content Include="CatNhomXetNghiem.aspx" />
+    <Content Include="CatQuyChuan.aspx" />
+    <Content Include="CatPhuongPhap.aspx" />
+    <Content Include="CatLoaiMau.aspx" />
+    <Content Include="ChiTieuXetNghiem.aspx" />
+    <Content Include="ChiTieuXetNghiemChiTiet.aspx" />
+    <Content Include="Controls\Admin_UCLog.ascx" />
+    <Content Include="Controls\Common_Paging.ascx" />
+    <Content Include="Controls\HorizotalMenu.ascx" />
+    <Content Include="Controls\QLTTLT_UCRightInRole.ascx" />
+    <Content Include="Controls\QLTTLT_UCUserInRole.ascx" />
+    <Content Include="Controls\QuickReview.ascx" />
+    <Content Include="Controls\ThanhLy.ascx" />
+    <Content Include="Controls\TraMau.ascx" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\checkbox\checkbox.css" />
+    <Content Include="css\combobox\bootstrap-select.css" />
+    <Content Include="css\combobox\bootstrap-select.min.css" />
+    <Content Include="css\combobox\select2.min.css" />
+    <Content Include="css\ControlStyle.css" />
+    <Content Include="css\customstyle.css" />
+    <Content Include="css\daterangepicker\custom.css" />
+    <Content Include="css\daterangepicker\daterangepicker.full.css" />
+    <Content Include="css\datetime\bootstrap-datetimepicker-standalone.css" />
+    <Content Include="css\datetime\bootstrap-datetimepicker.css" />
+    <Content Include="css\datetime\bootstrap-datetimepicker.min.css" />
+    <Content Include="css\dialog\bootstrap-dialog.min.css" />
+    <Content Include="css\dialog\bootstrap-dialog.min.old.css" />
+    <Content Include="css\grids\dataTables.bootstrap.css" />
+    <Content Include="css\grids\fixedColumns.bootstrap.css" />
+    <Content Include="css\grids\fixedHeader.bootstrap.css" />
+    <Content Include="css\grids\responsive.bootstrap.css" />
+    <Content Include="css\horizotalMenu.css" />
+    <Content Include="css\MathStyle.css" />
+    <Content Include="css\MathTextbox.css" />
+    <Content Include="css\nprogress\nprogress.css" />
+    <Content Include="css\pnotify\animate.css" />
+    <Content Include="css\pnotify\pnotify.core.css" />
+    <Content Include="css\pnotify\pnotify.custom.min.css" />
+    <Content Include="css\Printing.css" />
+    <Content Include="css\report_security_state.css" />
+    <Content Include="css\searchTagBox\searchTagBox.css" />
+    <Content Include="css\switch\bootstrap-toggle.css" />
+    <Content Include="css\switch\bootstrap-toggle.min.css" />
+    <Content Include="css\switch\bootstrap2-toggle.css" />
+    <Content Include="css\switch\bootstrap2-toggle.min.css" />
+    <Content Include="css\tab\tabulous.css" />
+    <Content Include="css\textbox\ExtraTextbox.css" />
+    <Content Include="css\validation\bootstrapValidator.css" />
+    <Content Include="css\validation\validationEngine.jquery.css" />
+    <Content Include="css\ViewRoomStyle.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="DashboardStats.aspx" />
+    <Content Include="DashboardLog.aspx" />
+    <Content Include="DMDonViTinh.aspx" />
+    <Content Include="DMPhongBan.aspx" />
+    <Content Include="icons\AweIcon\aweicon.css" />
+    <Content Include="icons\AweIcon\aweicon.min.css" />
+    <Content Include="icons\AweIcon\aweicon.svg" />
+    <Content Include="icons\FlatIcon\flaticon.css" />
+    <Content Include="icons\FlatIcon\flaticon.svg" />
+    <Content Include="icons\FlatIcon\license.txt" />
+    <Content Include="icons\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="images\login-background.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logo_icon.ico" />
+    <Content Include="images\no-image-icon-6.png" />
+    <Content Include="images\print.result.centificate.PNG" />
+    <Content Include="images\print.result.footer.PNG" />
+    <Content Include="MasterPages\Main.Master" />
+    <Content Include="icons\AweIcon\aweicon.eot" />
+    <Content Include="icons\AweIcon\aweicon.otf" />
+    <Content Include="icons\AweIcon\aweicon.ttf" />
+    <Content Include="icons\AweIcon\aweicon.woff" />
+    <Content Include="icons\AweIcon\aweicon.woff2" />
+    <Content Include="icons\FlatIcon\flaticon.eot" />
+    <Content Include="icons\FlatIcon\flaticon.ttf" />
+    <Content Include="icons\FlatIcon\flaticon.woff" />
+    <Content Include="icons\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="icons\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="icons\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="icons\glyphicons\glyphicons-halflings-regular.woff2" />
+    <Content Include="MauXetNghiem.aspx" />
+    <Content Include="MauXetNghiemChiTiet.aspx" />
+    <Content Include="PrintDemo1.html" />
+    <Content Include="BangTongKetXetNghiem.aspx" />
+    <Content Include="Printing\BienBanGhiChepThuNghiem.aspx" />
+    <Content Include="Printing\BienBanThanhLy.aspx" />
+    <Content Include="Printing\PhieuChuyenMau.aspx" />
+    <Content Include="Printing\PhieuDeNghiThuTien.aspx" />
+    <Content Include="Printing\PhieuKetQuaNew2P.aspx" />
+    <Content Include="Printing\PhieuKetQuaNew.aspx" />
+    <Content Include="Printing\PhieuKetQua.aspx" />
+    <Content Include="Printing\PhieuKetQuaNoiBo.aspx" />
+    <Content Include="Printing\PhieuTiepNhanYeuCau.aspx" />
+    <Content Include="Printing\PrintPhieuKetQuaKiermNghiemPhoi.aspx" />
+    <Content Include="QLNguoiDung.aspx" />
+    <Content Include="QLVaiTro.aspx" />
+    <Content Include="Reports\BaoCaoChiTieu.aspx" />
+    <Content Include="Reports\BaoCaoDoanhThu.aspx" />
+    <Content Include="Reports\BaoCaoDSMauTraKQ.aspx" />
+    <Content Include="Reports\BaoCaoTongHopKetQua.aspx" />
+    <Content Include="Reports\ReportThanhLy.aspx" />
+    <Content Include="Reports\TKLuongMauTheoChiTieuQuyChuan.aspx" />
+    <Content Include="Reports\TKLuongMauTheoQuyChuan.aspx" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\button\ExtraButton.js" />
+    <Content Include="scripts\combobox\bootstrap-select.js" />
+    <Content Include="scripts\combobox\bootstrap-select.min.js" />
+    <Content Include="scripts\combobox\ExtraCombobox.js" />
+    <Content Include="scripts\combobox\select2.full.js" />
+    <Content Include="scripts\combobox\select2.full.min.js" />
+    <Content Include="scripts\combobox\select2.min.js" />
+    <Content Include="scripts\Config.js" />
+    <Content Include="scripts\daterangepicker\ExtraDateRangePicker.js" />
+    <Content Include="scripts\daterangepicker\jquery.data-selector.js" />
+    <Content Include="scripts\daterangepicker\jquery.daterangepicker.js" />
+    <Content Include="scripts\daterangepicker\jquery.daterangepicker.languagetexts.js" />
+    <Content Include="scripts\daterangepicker\ui.position.js" />
+    <Content Include="scripts\daterangepicker\ui.version.js" />
+    <Content Include="scripts\datetime\bootstrap-datetimepicker.js" />
+    <Content Include="scripts\datetime\bootstrap-datetimepicker.min.js" />
+    <Content Include="scripts\datetime\ExtraDateTimePicker.js" />
+    <Content Include="scripts\datetime\locales\vi-VN.js" />
+    <Content Include="scripts\dialog\bootstrap-dialog.min.js" />
+    <Content Include="scripts\dialog\bootstrap-dialog.min.old.js" />
+    <Content Include="scripts\dialog\ExtraDialog.js" />
+    <Content Include="scripts\dialog\run_prettify.min.js" />
+    <Content Include="scripts\dualList\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="scripts\grids\dataTables.bootstrap.js" />
+    <Content Include="scripts\grids\dataTables.fixedColumns.js" />
+    <Content Include="scripts\grids\dataTables.fixedHeader.js" />
+    <Content Include="scripts\grids\dataTables.responsive.js" />
+    <Content Include="scripts\grids\ExtraGrid.js" />
+    <Content Include="scripts\grids\jquery.dataTables.js" />
+    <Content Include="scripts\grids\responsive.bootstrap.js" />
+    <Content Include="scripts\input_mask\jquery.inputmask.date.extensions.js" />
+    <Content Include="scripts\input_mask\jquery.inputmask.extensions.js" />
+    <Content Include="scripts\input_mask\jquery.inputmask.js" />
+    <Content Include="scripts\input_mask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="scripts\input_mask\jquery.inputmask.regex.extensions.js" />
+    <Content Include="scripts\isotope.pkgd.min.js" />
+    <Content Include="scripts\jQuery-2.1.4.min.js" />
+    <Content Include="scripts\jquery-ui.js" />
+    <Content Include="scripts\jquery-ui.min.js" />
+    <Content Include="scripts\jquery.shorten.js" />
+    <Content Include="scripts\jquery_1_11_2_min.js" />
+    <Content Include="scripts\mainScript.js" />
+    <Content Include="scripts\MathControl.js" />
+    <Content Include="scripts\MathTextbox.js" />
+    <Content Include="scripts\moment-timezone\builds\moment-timezone-with-data-2010-2020.js" />
+    <Content Include="scripts\moment-timezone\builds\moment-timezone-with-data-2010-2020.min.js" />
+    <Content Include="scripts\moment-timezone\builds\moment-timezone-with-data.js" />
+    <Content Include="scripts\moment-timezone\builds\moment-timezone-with-data.min.js" />
+    <Content Include="scripts\moment-timezone\builds\moment-timezone.min.js" />
+    <Content Include="scripts\moment-timezone\moment-timezone-utils.js" />
+    <Content Include="scripts\moment-timezone\moment-timezone.js" />
+    <Content Include="scripts\moment\locales.js" />
+    <Content Include="scripts\moment\locales.min.js" />
+    <Content Include="scripts\moment\moment-with-locales.js" />
+    <Content Include="scripts\moment\moment-with-locales.min.js" />
+    <Content Include="scripts\moment\moment.min.js" />
+    <Content Include="scripts\nprogress\nprogress.js" />
+    <Content Include="scripts\pnotify\pnotify.animate.js" />
+    <Content Include="scripts\pnotify\pnotify.custom.min.js" />
+    <Content Include="scripts\Room.js" />
+    <Content Include="scripts\searchTagBox\searchTagBox.js" />
+    <Content Include="scripts\spin.min.js" />
+    <Content Include="scripts\switch\bootstrap-toggle.js" />
+    <Content Include="scripts\switch\bootstrap-toggle.min.js" />
+    <Content Include="scripts\switch\bootstrap2-toggle.js" />
+    <Content Include="scripts\switch\bootstrap2-toggle.min.js" />
+    <Content Include="scripts\switch\ExtraToggleSwitch.js" />
+    <Content Include="scripts\tab\tabulous.js" />
+    <Content Include="scripts\validation\bootstrapValidator.js" />
+    <Content Include="scripts\validation\jquery.validationEngine.js" />
+    <Content Include="scripts\validation\languages\jquery.validationEngine-en-US.js" />
+    <Content Include="scripts\validation\languages\jquery.validationEngine-vi-VN.js" />
+    <Content Include="scripts\validation\validationScript.js" />
+    <Content Include="scripts\ViewRoom.js" />
+    <Content Include="SystemLogin.aspx" />
+    <Content Include="ThanhLy.aspx" />
+    <Content Include="ThayMatKhau.aspx" />
+    <Content Include="Themes\ace\fonts\fonts.googleapis.com.css" />
+    <Content Include="Themes\ace\script\ace-elements.min.js" />
+    <Content Include="Themes\ace\script\ace-extra.min.js" />
+    <Content Include="Themes\ace\script\ace.min.js" />
+    <Content Include="Themes\ace\script\button\ExtraButton.js" />
+    <Content Include="Themes\ace\script\checkbox\ExtraCheckbox.js" />
+    <Content Include="Themes\ace\script\jquery-ui.custom.min.js" />
+    <Content Include="Themes\ace\script\jquery.easypiechart.min.js" />
+    <Content Include="Themes\ace\script\jquery.flot.min.js" />
+    <Content Include="Themes\ace\script\jquery.flot.pie.min.js" />
+    <Content Include="Themes\ace\script\jquery.flot.resize.min.js" />
+    <Content Include="Themes\ace\script\jquery.gritter.min.js" />
+    <Content Include="Themes\ace\script\jquery.maskedinput.min.js" />
+    <Content Include="Themes\ace\script\jquery.sparkline.min.js" />
+    <Content Include="Themes\ace\script\jquery.ui.touch-punch.min.js" />
+    <Content Include="Themes\ace\script\radio\ExtraRadio.js" />
+    <Content Include="Themes\ace\style\ace-ie.min.css" />
+    <Content Include="Themes\ace\style\ace.min.css" />
+    <Content Include="Themes\ace\style\bootstrap-duallistbox.min.css" />
+    <Content Include="Themes\ace\style\button\ExtraButton.css" />
+    <Content Include="Themes\ace\style\jquery.gritter.min.css" />
+    <Content Include="Themes\Futureui\css\horizotalMenuIcon.css" />
+    <Content Include="Themes\Futureui\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Themes\Futureui\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Themes\Futureui\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Themes\Futureui\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Themes\Futureui\fonts\pasteur.ttf" />
+    <Content Include="Themes\Futureui\fonts\pasteur.woff" />
+    <Content Include="scripts\datetime\bootstrap-datetimepicker.min.js.map" />
+    <Content Include="scripts\moment-timezone\data\meta\latest.json" />
+    <Content Include="scripts\moment-timezone\data\packed\latest.json" />
+    <Content Include="scripts\moment-timezone\data\unpacked\latest.json" />
+    <Content Include="UploadImages.ashx" />
+    <Content Include="Reports\DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="XuLyChucNang.aspx" />
+    <None Include="Reports\DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\Futureui\css\feather.css" />
+    <Content Include="Themes\Futureui\css\flag-icon.min.css" />
+    <Content Include="Themes\Futureui\css\materialdesignicons.min.css" />
+    <Content Include="Themes\Futureui\css\style.css" />
+    <Content Include="Themes\Futureui\css\vendor.bundle.addons.css" />
+    <Content Include="Themes\Futureui\css\vendor.bundle.base.css" />
+    <Content Include="Themes\Futureui\fonts\materialdesignicons-webfont.svg" />
+    <Content Include="Themes\Futureui\fonts\pasteur.svg" />
+    <Content Include="Themes\Futureui\scripts\file-upload.js" />
+    <Content Include="Themes\Futureui\scripts\hoverable-collapse.js" />
+    <Content Include="Themes\Futureui\scripts\off-canvas.js" />
+    <Content Include="Themes\Futureui\scripts\select2.js" />
+    <Content Include="Themes\Futureui\scripts\settings.js" />
+    <Content Include="Themes\Futureui\scripts\template.js" />
+    <Content Include="Themes\Futureui\scripts\todolist.js" />
+    <Content Include="Themes\Futureui\scripts\typeahead.js" />
+    <Content Include="Themes\Futureui\scripts\vendor.bundle.addons.js" />
+    <Content Include="Themes\Futureui\scripts\vendor.bundle.base.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Building.aspx.cs">
+      <DependentUpon>Building.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Building.aspx.designer.cs">
+      <DependentUpon>Building.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatThongTu.aspx.cs">
+      <DependentUpon>CatThongTu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatThongTu.aspx.designer.cs">
+      <DependentUpon>CatThongTu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatChungChi.aspx.cs">
+      <DependentUpon>CatChungChi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatChungChi.aspx.designer.cs">
+      <DependentUpon>CatChungChi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatLoaiHinhYeuCau.aspx.cs">
+      <DependentUpon>CatLoaiHinhYeuCau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatLoaiHinhYeuCau.aspx.designer.cs">
+      <DependentUpon>CatLoaiHinhYeuCau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatChiTieuGioiHan.aspx.cs">
+      <DependentUpon>CatChiTieuGioiHan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatChiTieuGioiHan.aspx.designer.cs">
+      <DependentUpon>CatChiTieuGioiHan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatNhomXetNghiem.aspx.cs">
+      <DependentUpon>CatNhomXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatNhomXetNghiem.aspx.designer.cs">
+      <DependentUpon>CatNhomXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatQuyChuan.aspx.cs">
+      <DependentUpon>CatQuyChuan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatQuyChuan.aspx.designer.cs">
+      <DependentUpon>CatQuyChuan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatPhuongPhap.aspx.cs">
+      <DependentUpon>CatPhuongPhap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatPhuongPhap.aspx.designer.cs">
+      <DependentUpon>CatPhuongPhap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatLoaiMau.aspx.cs">
+      <DependentUpon>CatLoaiMau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CatLoaiMau.aspx.designer.cs">
+      <DependentUpon>CatLoaiMau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTieuXetNghiem.aspx.cs">
+      <DependentUpon>ChiTieuXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTieuXetNghiem.aspx.designer.cs">
+      <DependentUpon>ChiTieuXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTieuXetNghiemChiTiet.aspx.cs">
+      <DependentUpon>ChiTieuXetNghiemChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTieuXetNghiemChiTiet.aspx.designer.cs">
+      <DependentUpon>ChiTieuXetNghiemChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BaseGridPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin_UCLog.ascx.cs">
+      <DependentUpon>Admin_UCLog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin_UCLog.ascx.designer.cs">
+      <DependentUpon>Admin_UCLog.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Common_Paging.ascx.cs">
+      <DependentUpon>Common_Paging.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Common_Paging.ascx.designer.cs">
+      <DependentUpon>Common_Paging.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HorizotalMenu.ascx.cs">
+      <DependentUpon>HorizotalMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\HorizotalMenu.ascx.designer.cs">
+      <DependentUpon>HorizotalMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QLTTLT_UCRightInRole.ascx.cs">
+      <DependentUpon>QLTTLT_UCRightInRole.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QLTTLT_UCRightInRole.ascx.designer.cs">
+      <DependentUpon>QLTTLT_UCRightInRole.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QLTTLT_UCUserInRole.ascx.cs">
+      <DependentUpon>QLTTLT_UCUserInRole.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QLTTLT_UCUserInRole.ascx.designer.cs">
+      <DependentUpon>QLTTLT_UCUserInRole.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QuickReview.ascx.cs">
+      <DependentUpon>QuickReview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QuickReview.ascx.designer.cs">
+      <DependentUpon>QuickReview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ThanhLy.ascx.cs">
+      <DependentUpon>ThanhLy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ThanhLy.ascx.designer.cs">
+      <DependentUpon>ThanhLy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TraMau.ascx.cs">
+      <DependentUpon>TraMau.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\TraMau.ascx.designer.cs">
+      <DependentUpon>TraMau.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardStats.aspx.cs">
+      <DependentUpon>DashboardStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardStats.aspx.designer.cs">
+      <DependentUpon>DashboardStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardLog.aspx.cs">
+      <DependentUpon>DashboardLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardLog.aspx.designer.cs">
+      <DependentUpon>DashboardLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DMDonViTinh.aspx.cs">
+      <DependentUpon>DMDonViTinh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DMDonViTinh.aspx.designer.cs">
+      <DependentUpon>DMDonViTinh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DMPhongBan.aspx.cs">
+      <DependentUpon>DMPhongBan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DMPhongBan.aspx.designer.cs">
+      <DependentUpon>DMPhongBan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPages\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MauXetNghiem.aspx.cs">
+      <DependentUpon>MauXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MauXetNghiem.aspx.designer.cs">
+      <DependentUpon>MauXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MauXetNghiemChiTiet.aspx.cs">
+      <DependentUpon>MauXetNghiemChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MauXetNghiemChiTiet.aspx.designer.cs">
+      <DependentUpon>MauXetNghiemChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BangTongKetXetNghiem.aspx.cs">
+      <DependentUpon>BangTongKetXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BangTongKetXetNghiem.aspx.designer.cs">
+      <DependentUpon>BangTongKetXetNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\BienBanGhiChepThuNghiem.aspx.cs">
+      <DependentUpon>BienBanGhiChepThuNghiem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\BienBanGhiChepThuNghiem.aspx.designer.cs">
+      <DependentUpon>BienBanGhiChepThuNghiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\BienBanThanhLy.aspx.cs">
+      <DependentUpon>BienBanThanhLy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\BienBanThanhLy.aspx.designer.cs">
+      <DependentUpon>BienBanThanhLy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuChuyenMau.aspx.cs">
+      <DependentUpon>PhieuChuyenMau.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuChuyenMau.aspx.designer.cs">
+      <DependentUpon>PhieuChuyenMau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuDeNghiThuTien.aspx.cs">
+      <DependentUpon>PhieuDeNghiThuTien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuDeNghiThuTien.aspx.designer.cs">
+      <DependentUpon>PhieuDeNghiThuTien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNew2P.aspx.cs">
+      <DependentUpon>PhieuKetQuaNew2P.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNew2P.aspx.designer.cs">
+      <DependentUpon>PhieuKetQuaNew2P.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNew.aspx.cs">
+      <DependentUpon>PhieuKetQuaNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNew.aspx.designer.cs">
+      <DependentUpon>PhieuKetQuaNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQua.aspx.cs">
+      <DependentUpon>PhieuKetQua.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQua.aspx.designer.cs">
+      <DependentUpon>PhieuKetQua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNoiBo.aspx.cs">
+      <DependentUpon>PhieuKetQuaNoiBo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuKetQuaNoiBo.aspx.designer.cs">
+      <DependentUpon>PhieuKetQuaNoiBo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PhieuTiepNhanYeuCau.aspx.cs">
+      <DependentUpon>PhieuTiepNhanYeuCau.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PhieuTiepNhanYeuCau.aspx.designer.cs">
+      <DependentUpon>PhieuTiepNhanYeuCau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PrintPhieuKetQuaKiermNghiemPhoi.aspx.cs">
+      <DependentUpon>PrintPhieuKetQuaKiermNghiemPhoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Printing\PrintPhieuKetQuaKiermNghiemPhoi.aspx.designer.cs">
+      <DependentUpon>PrintPhieuKetQuaKiermNghiemPhoi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLNguoiDung.aspx.cs">
+      <DependentUpon>QLNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QLNguoiDung.aspx.designer.cs">
+      <DependentUpon>QLNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QLVaiTro.aspx.cs">
+      <DependentUpon>QLVaiTro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QLVaiTro.aspx.designer.cs">
+      <DependentUpon>QLVaiTro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BaoCaoChiTieu.aspx.cs">
+      <DependentUpon>BaoCaoChiTieu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BaoCaoChiTieu.aspx.designer.cs">
+      <DependentUpon>BaoCaoChiTieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BaoCaoDoanhThu.aspx.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BaoCaoDoanhThu.aspx.designer.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BaoCaoDSMauTraKQ.aspx.cs">
+      <DependentUpon>BaoCaoDSMauTraKQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BaoCaoDSMauTraKQ.aspx.designer.cs">
+      <DependentUpon>BaoCaoDSMauTraKQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BaoCaoTongHopKetQua.aspx.cs">
+      <DependentUpon>BaoCaoTongHopKetQua.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\BaoCaoTongHopKetQua.aspx.designer.cs">
+      <DependentUpon>BaoCaoTongHopKetQua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportThanhLy.aspx.cs">
+      <DependentUpon>ReportThanhLy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportThanhLy.aspx.designer.cs">
+      <DependentUpon>ReportThanhLy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TKLuongMauTheoChiTieuQuyChuan.aspx.cs">
+      <DependentUpon>TKLuongMauTheoChiTieuQuyChuan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TKLuongMauTheoChiTieuQuyChuan.aspx.designer.cs">
+      <DependentUpon>TKLuongMauTheoChiTieuQuyChuan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TKLuongMauTheoQuyChuan.aspx.cs">
+      <DependentUpon>TKLuongMauTheoQuyChuan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\TKLuongMauTheoQuyChuan.aspx.designer.cs">
+      <DependentUpon>TKLuongMauTheoQuyChuan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLogin.aspx.cs">
+      <DependentUpon>SystemLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SystemLogin.aspx.designer.cs">
+      <DependentUpon>SystemLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhLy.aspx.cs">
+      <DependentUpon>ThanhLy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhLy.aspx.designer.cs">
+      <DependentUpon>ThanhLy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThayMatKhau.aspx.cs">
+      <DependentUpon>ThayMatKhau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ThayMatKhau.aspx.designer.cs">
+      <DependentUpon>ThayMatKhau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadImages.ashx.cs">
+      <DependentUpon>UploadImages.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="XuLyChucNang.aspx.cs">
+      <DependentUpon>XuLyChucNang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XuLyChucNang.aspx.designer.cs">
+      <DependentUpon>XuLyChucNang.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoi04.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoi03.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoi02.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoi01.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoiKhongDanhGia.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaKiemNghiemPhoi.rdlc" />
+    <EmbeddedResource Include="Reports\PhieuKetQuaNormal.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pasteur.Core\Pasteur.Core.csproj">
+      <Project>{33e81eb0-b7d8-4309-80dc-20652531a79e}</Project>
+      <Name>Pasteur.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pasteur.DataAccess\Pasteur.DataAccess.csproj">
+      <Project>{8decd7cf-bc5c-4a0a-a708-6620dd110dbe}</Project>
+      <Name>Pasteur.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SweetSoft.ExtraControls\SweetSoft.ExtraControls.csproj">
+      <Project>{5eb8d552-1643-479c-a01f-6d9e28df6f4b}</Project>
+      <Name>SweetSoft.ExtraControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>33270</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44344/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

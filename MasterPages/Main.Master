@@ -1,0 +1,343 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Pasteur.Laboratory.P2.MasterPages.Main" %>
+
+<!DOCTYPE html>
+<%@ Register Src="~/Controls/HorizotalMenu.ascx" TagName="HorizotalMenu" TagPrefix="MLTech" %>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" href="/images/logo_icon.ico" type="image/gif" sizes="16x16" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/icons/AweIcon/aweicon.css" />
+
+    <link href="/css/horizotalMenu.css" rel="stylesheet" />
+    <link href="../css/MathTextbox.css" rel="stylesheet" />
+
+
+    <title>Quản lý kết quả xét nghiệm viện Pasteur</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        S
+    </asp:ContentPlaceHolder>
+    <link href="/css/customstyle.css" rel="stylesheet" type="text/css" />
+    <link href="/css/MathStyle.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body, html {
+            font-family: 'Questrial' !important;
+            font-size: 15px !important;
+        }
+
+        .phuong-phap-dropdown .opt {
+            line-height: 0px;
+            padding: 8px 0px 8px 5px;
+        }
+
+        .phuong-phap-dropdown .text {
+            font-size: 0px;
+        }
+
+        .no-sort .sorting, .no-sort .sorting:after {
+            content: "" !important;
+        }
+
+        #gritter-notice-wrapper {
+            bottom: 0px !important;
+            top: unset !important;
+        }
+    </style>
+    <script src="/scripts/jQuery-2.1.4.min.js"></script>
+    <script src="/scripts/Config.js"></script>
+    <script src="/scripts/pnotify/pnotify.custom.min.js"></script>
+    <script src="/scripts/pnotify/pnotify.animate.js"></script>
+    <script src="/scripts/nprogress/nprogress.js"></script>
+    <script src="/scripts/validation/languages/jquery.validationEngine-vi-VN.js"></script>
+    <script src="/scripts/validation/jquery.validationEngine.js"></script>
+    <script src="/scripts/validation/validationScript.js"></script>
+    <script src="/scripts/MathTextbox.js"></script>
+    <script src="/scripts/MathControl.js"></script>
+    <script type="text/javascript">
+        //window.onload = pageLoad;
+
+        //function pageLoad() {
+        //    //$('.dropdown-menu span.text').ready(function () { var thid = $(this); console.log("thid: ", thid); });
+        //    var span_text = $(".dropdown-menu span.text"); 
+        //    if (span_text.length > 0) {
+        //        span_text.each(function (idx, item) {
+        //            var ht = $(item).html();
+        //            //console.log("item: ", item);
+        //            while (ht.indexOf("&lt;") > -1)
+        //                ht = ht.replace("&lt;", "<");
+        //            while (ht.indexOf("&gt;") > -1)
+        //                ht = ht.replace("&gt;", ">");
+        //            $(item).html(ht);
+        //        });
+        //    }
+
+        //}
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="scriptManager" runat="server"></asp:ScriptManager>
+        <SweetSoft:ExtraScriptRegister
+            ID="extraScriptManager"
+            runat="server"
+            ScriptPlaceHolder="StyleFScriptPlaceHolder" />
+        <SweetSoft:ExtraSkinManager
+            ID="extraSkinManager"
+            runat="server"
+            ControlTheme="ACE"
+            ButtonStyle="Danger_Bold"
+            CheckBoxStyle="Danger" />
+
+        <div class="container-scroller">
+            <!-- partial:../../partials/_horizontal-navbar.html -->
+            <div class="horizontal-menu">
+
+                <nav class="bottom-navbar">
+                    <MLTech:HorizotalMenu ID="horizotalMenu" runat="server" />
+                </nav>
+            </div>
+            <div class="container-fluid page-body-wrapper" style="margin-top: 120px;">
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <a id="link_download"></a>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <asp:UpdatePanel ID="panelHidden" runat="server">
+                            <ContentTemplate>
+                                <asp:HiddenField ID="hiddenUserLoginId" runat="server" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <asp:ContentPlaceHolder ID="DialogPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="StyleFScriptPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ScriptInlinePage" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <SweetSoft:ExtraDialog
+            ID="dialogConfirm"
+            runat="server"
+            RestrictionZoneID="body"
+            HeadButtons="Close"
+            CloseText="Đóng">
+            <HeaderTemplate>
+                <asp:Literal runat="server"
+                    ID="ltrDialogConfirmTitle"
+                    Text="Thông báo">
+                </asp:Literal>
+                <asp:ContentPlaceHolder ID="ConfirmHeaderPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <asp:Literal runat="server"
+                    ID="ltrDialogConfirmContent">
+                </asp:Literal>
+                <asp:ContentPlaceHolder ID="ConfirmContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </ContentTemplate>
+            <FooterTemplate>
+                <SweetSoft:ExtraButton
+                    ID="btnConfirmSubmit"
+                    EStyle="Success"
+                    EIcon="A_Submit"
+                    Text="Đồng ý"
+                    runat="server"
+                    OnClick="btnConfirmSubmit_Click"
+                    Visible="false">
+                </SweetSoft:ExtraButton>
+                <SweetSoft:ExtraButton
+                    ID="btnConfirmCancel"
+                    EStyle="Danger"
+                    EIcon="A_Cancel"
+                    Text="Bỏ qua"
+                    runat="server"
+                    OnClick="btnConfirmCancel_Click"
+                    Visible="false">
+                </SweetSoft:ExtraButton>
+                <asp:ContentPlaceHolder ID="ConfirmFooterPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </FooterTemplate>
+        </SweetSoft:ExtraDialog>
+
+        <SweetSoft:ExtraDialog
+            ID="dialogLogout"
+            runat="server"
+            CloseText="Đóng"
+            EnableDraggable="true"
+            ShowFooterButtonClose="true"
+            Size="Normal">
+            <HeaderTemplate>Đăng xuất hệ thống</HeaderTemplate>
+            <ContentTemplate>Bạn muốn đăng xuất khỏi hệ thống quản lý ?</ContentTemplate>
+            <FooterTemplate>
+                <SweetSoft:ExtraButton
+                    ID="btnSubmitLogout"
+                    runat="server"
+                    EIcon="A_Submit"
+                    Text="Đồng ý"
+                    EnableSnipButton="true"
+                    EStyle="Warning_Bold"
+                    OnClick="btnSubmitLogout_Click">
+                </SweetSoft:ExtraButton>
+            </FooterTemplate>
+        </SweetSoft:ExtraDialog>
+        <div class="math-control-box">
+            <a class="math-control-button close-button" onclick="CloseMathBox()()"><i class="fa fa-close"></i></a>
+            <a class="math-control-button" onclick="m_htmlChar('&micro;')">&micro;</a>
+            <a class="math-control-button" onclick="m_htmlChar('&beta;')">&beta;</a>
+            <a class="math-control-button" onclick="m_htmlChar('&alpha;')">&alpha;</a>
+            <a class="math-control-button" onclick="m_htmlChar('&deg;')">&deg;</a>
+            <a class="math-control-button" onclick="m_htmlChar('&permil;')">&permil;</a>
+            <a class="math-control-button" onclick="m_underline('+')"><span class="math-underline">+</span></a>
+            <a class="math-control-button" onclick="m_underline('>')"><span class="math-underline">></span></a>
+            <a class="math-control-button" onclick="m_underline('<')"><span class="math-underline"><</span></a>
+            <a class="math-control-button" onclick="m_supscript()">X<sup>2</sup></a>
+            <a class="math-control-button" onclick="m_subscript()">X<sub>2</sub></a>
+        </div>
+        <script src="/themes/ace/script/jquery-ui.custom.min.js"></script>
+        <script src="/themes/ace/script/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript">
+            function PrintReport(printID) {
+
+                // Reading the report styles
+                var styles = $("html").find("head style[id$='ReportControl_styles']").html();
+                if ((styles == undefined) || (styles == '')) {
+                    iDoc.find('head script').each(function () {
+                        var cnt = $(this).html();
+                        var p1 = cnt.indexOf('ReportStyles":"');
+                        if (p1 > 0) {
+                            p1 += 15;
+                            var p2 = cnt.indexOf('"', p1);
+                            styles = cnt.substr(p1, p2 - p1);
+                        }
+                    });
+                }
+                if (styles == '') { alert("Cannot generate styles, Displaying without styles.."); }
+                styles = '<style type="text/css">' + styles + "</style>";
+
+
+                // Reading the report html
+                var table = $("#" + printID).find("div[id$='_oReportDiv']");
+                if (table == undefined) {
+                    alert("Report source not found.");
+                    return;
+                }
+
+                // Generating a copy of the report in a new window
+                var docType = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">';
+                var docCnt = styles + table.parent().html();
+                var docHead = '<head><title>Printing ...</title><style>body{margin:5;padding:0;}</style></head>';
+                var winAttr = "location=yes, statusbar=no, directories=no, menubar=no, titlebar=no, toolbar=no, dependent=no, width=720, height=600, resizable=yes, screenX=200, screenY=200, personalbar=no, scrollbars=yes";;
+                var newWin = window.open("", "_blank", winAttr);
+                writeDoc = newWin.document;
+                writeDoc.open();
+                writeDoc.write(docType + '<html>' + docHead + '<body onload="window.print();">' + docCnt + '</body></html>');
+                writeDoc.close();
+
+                // The print event will fire as soon as the window loads
+                newWin.focus();
+                // uncomment to autoclose the preview window when printing is confirmed or canceled.
+                // newWin.close();
+
+            }
+
+            function BeforeUnload() {
+                //var hiddenUserLoginId = $("input[type='hidden'][id$='hiddenUserLoginId']");
+                //var data = { "val": hiddenUserLoginId.val() };
+                //var result = AjaxPost(data, "/Default.aspx/UnloadPage");
+            }
+
+            function ExportExcel(table, date) {
+                tableToExcel(table, date);
+                // return false;
+            }
+
+            var tableToExcel = (function () {
+                var uri = 'data:application/vnd.ms-excel;base64,'
+                    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                    , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                    , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+                return function (table, name) {
+                    if (!table.nodeType) table = document.getElementById(table);
+                    console.log("table: ", table);
+                    var ctx = { worksheet: "export" || 'Worksheet', table: table.innerHTML }
+                    //  window.location.href = uri + base64(format(template, ctx))
+                    var link = document.getElementById("link_download");
+                    link.download = name;
+                    link.href = uri + base64(format(template, ctx));
+
+                    link.click();
+                    CloseButtonSnip();
+                }
+            })()
+
+            InitPhuongPhapDropdown();
+            addRequestHanlde(InitPhuongPhapDropdown);
+
+            function InitPhuongPhapDropdown() {
+                var selectCol = $("select.phuong-phap-dropdown");
+                console.log("selectCol: ", selectCol);
+                if (selectCol.length > 0) {
+                    selectCol.each(function (item, idx) {
+                        var select = $(this);
+                        select.on("change", function (e) {
+                            var id = $(this).attr("id");
+                            setTimeout(function () {
+                                var text = $("button.dropdown-toggle[data-id='" + id + "'] .filter-option");
+                                if (text.length > 0) {
+                                    var ct = text[0].innerText;
+                                    $(text[0]).text("");
+                                    $(text[0]).html(ct);
+                                }
+                            }, 10);
+
+                        });
+                    });
+                }
+
+                setTimeout(function () {
+                    var text = $(".phuong-phap-dropdown .filter-option");
+                    if (text.length > 0) {
+                        text.each(function (item, idx) {
+                            var ct = $(this)[0].innerText;
+                            $(this).text("");
+                            $(this).html(ct);
+                        });
+                    }
+                }, 200);
+            }
+
+            var xPos, yPos;
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+            function BeginRequestHandler(sender, args) {
+                {
+                    xPos = window.scrollX;
+                    yPos = window.scrollY;
+
+                }
+            }
+
+            function EndRequestHandler(sender, args) {
+                {
+                    setTimeout(function () { window.scrollTo(xPos, yPos); }, 1);
+
+                }
+            }
+            prm.add_beginRequest(BeginRequestHandler);
+            prm.add_endRequest(EndRequestHandler);
+        </script>
+    </form>
+
+
+
+</body>
+</html>

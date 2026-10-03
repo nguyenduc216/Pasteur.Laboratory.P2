@@ -1,0 +1,19 @@
+﻿a.btn i.right::before {
+    margin: 0 0 0 6px;
+}
+
+a.btn span.text + i.icon::before {
+    display: inline-block;
+    margin: 0 6px 0 0;
+    min-width: 16px;
+}
+
+a.btn  i.icon::before {
+    display: inline-block;
+    margin: 0px;
+    min-width: 14px;
+}
+
+.btn-group > a.btn > i.left::before, .input-group-addon + a.btn > i.left::before {
+    margin: 0px -7px 0px 0px;
+}

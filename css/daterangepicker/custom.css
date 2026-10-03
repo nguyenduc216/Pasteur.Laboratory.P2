@@ -1,0 +1,18 @@
+.date-picker-wrapper {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.date-picker-wrapper .footer{padding-top:0}
+.date-picker-wrapper .month-wrapper table{max-width:215px}
+.date-picker-wrapper table .caption {
+    height: 30px;
+}
+.date-picker-wrapper .month-name .sel-month,
+.date-picker-wrapper .month-name .sel-year{height:24px}
+.ll-skin-latoja.date-picker-wrapper .month-wrapper table td div.day {
+    padding: 8px;
+    border: none;
+}
+.date-picker-wrapper.no-shortcuts{padding:0}
+.daterange-picker + input + .input-group-addon{cursor:pointer}

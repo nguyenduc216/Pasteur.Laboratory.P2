@@ -1,0 +1,156 @@
+﻿.navbar-brand {
+    padding: 4px 5px;
+}
+
+.search-item {
+}
+
+.search-item {
+    padding: 1px 5px;
+    position: relative;
+}
+
+.div-data .search-item {
+    border: solid 1px #838181;
+}
+
+.search-item + .search-item {
+    border-top: 0px;
+}
+
+
+
+.search-item .displaytext {
+    float: left;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.search-item .span-item {
+    display: inline-block;
+    font-style: italic;
+    font-size: 13px;
+    margin: 0px 5px;
+}
+
+.div-data .search-item span.span-item {
+    float: right;
+}
+
+.control-red a {
+    color: red !important;
+}
+.control-green a {
+    color: green !important;
+}
+
+
+.tab-chiTieu {
+    width: 100%;
+}
+
+    .tab-chiTieu td {
+        border: solid 1px #585353;
+        padding: 2px 5px;
+    }
+
+    .tab-chiTieu .title {
+        font-weight: bold;
+        color: #712d94;
+        display: inline-block;
+    }
+
+        .tab-chiTieu .title.children {
+            margin-left: 10px;
+        }
+
+    .tab-chiTieu .sub-title {
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .tab-chiTieu .price {
+        text-align: right;
+    }
+
+    .tab-chiTieu .tr-group-title {
+        background-color: #9d9c9d;
+    }
+
+table.tab-chiTieu thead tr {
+    background-color: #8c65a0;
+    color: white;
+}
+
+ul.ui-autocomplete {
+    z-index: 1051;
+}
+
+.widget-toolbar > .btn-xs {
+    line-height: 26px !important;
+    margin-top: -1px !important;
+    color: white !important;
+}
+
+.widget-box .widget-header a.btn-xs {
+    padding: 0px 5px;
+    border: solid 2px #7aa572;
+    color: white !important;
+}
+
+.btn-group.alright .dropdown-menu {
+    right: 0;
+    left: unset;
+}
+
+.drop-empty .caret {
+    display: none;
+}
+
+.drop-empty .filter-option {
+    text-align: center !important;
+    font-weight: bold;
+}
+
+.nhapkhoang-item {
+    width: 20%;
+    padding: 0px 2px;
+    float: left;
+}
+
+    .nhapkhoang-item .title-small {
+        font-size: 12px;
+    }
+
+    .nhapkhoang-item .txt-small {
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        padding: 2px;
+        font-size: 12px;
+        border-color: #712d94;
+    }
+
+    .nhapkhoang-item .cb-small {
+        background-color: white !important;
+        /* border-left: 0px; */
+        /* border-top: 0px; */
+        /* border-right: 0px; */
+        border-width: 1px;
+    }
+
+.cb-small .dropdown-toggle {
+    background-color: white !important;
+    /* border-left: 0px; */
+    /* border-top: 0px; */
+    /* border-right: 0px; */
+    border-width: 1px !important;
+    padding:2px !important;
+}
+
+.cb-small .filter-option, .cb-small .text {
+    font-size: 12px;
+    color: black;
+    text-align: center !important;
+    display: block !important;
+}

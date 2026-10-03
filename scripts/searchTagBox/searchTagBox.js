@@ -1,0 +1,1 @@
+﻿SweetSoft_Settings.Properties.RegisterSearchBoxScript = true;

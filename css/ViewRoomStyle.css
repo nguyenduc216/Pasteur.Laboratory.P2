@@ -1,0 +1,55 @@
+﻿.Floor {
+}
+
+.room {
+    margin-bottom: 15px;
+}
+
+.room-box {
+    border: solid 1px #c3c3c3;
+    background-color: #ececec;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+    .room-box .label {
+        height: 18px;
+        padding: 2px 15px;
+        width: 50%;
+    }
+
+    .room-box .btn {
+        padding: 5px 0;
+        width: 100%;
+    }
+
+    .room-box.active {
+        border: solid 1px #c30b0b;
+        background-color: #f58b8b;
+    }
+
+    .room-box h3 {
+        margin: 0px;
+        padding: 5px 0px;
+        font-size: 20px;
+        text-align: center;
+        border-bottom: solid 1px #c7c7c7;
+    }
+
+    .room-box.active h3 {
+        border-bottom: solid 1px #b51010;
+    }
+
+    .room-box .detail {
+        border-top: solid 1px #fff;
+        padding: 7px 0px 0px 0px;
+    }
+
+    .room-box.active .detail {
+        border-top: solid 1px #ffc3c3;
+    }
+
+    .room-box .detail i {
+        margin-right: 2px;
+        min-width: 10px;
+    }

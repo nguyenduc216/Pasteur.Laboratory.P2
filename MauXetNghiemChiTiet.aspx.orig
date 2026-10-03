@@ -1,0 +1,889 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/Main.Master" AutoEventWireup="true" CodeBehind="MauXetNghiemChiTiet.aspx.cs" Inherits="Pasteur.Laboratory.MauXetNghiemChiTiet" %>
+
+<%@ Register Src="~/Controls/Common_Paging.ascx" TagName="Paging" TagPrefix="SweetSoft" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .hide {
+            display: none;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:UpdatePanel ID="updateContent" runat="server">
+        <ContentTemplate>
+            <asp:HiddenField ID="hiddenTab" runat="server" Value="ThongTin" />
+            <div class="widget-box ui-sortable-handle">
+                <div class="widget-header ">
+                    <div class="widget-title" style="position: relative; float: left;">
+                        <ul class="nav nav-tabs" id="myTab" style="margin-top: 5px;">
+                            <li class='<%= GetTabVisible("ThongTin","") %>'>
+                                <a data-toggle="tab" onclick="SetTab('ThongTin')" href="#thongTin" aria-expanded="true">
+                                    <asp:Literal ID="ltrThongTin" runat="server" Text="Thông tin mẫu"></asp:Literal>
+                                </a>
+                            </li>
+
+                            <li id="liChiTieu" class='<%= GetTabVisible("ChiTieu","") %>'>
+                                <a data-toggle="tab" onclick="SetTab('ChiTieu')" href="#chiTieu" aria-expanded="false">Danh sách chỉ tiêu</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="widget-toolbar ">
+
+                        <SweetSoft:ExtraButton Visible="false" ID="btnAddNew" Transparent="true" runat="server" EIcon="A_Add" Text="Thêm mới" OnClick="btnAddNew_Click">
+                        </SweetSoft:ExtraButton>
+                        <SweetSoft:ExtraButton Visible="false" ID="btnCopyCode" Transparent="true" runat="server" EIcon="A_Clone" Text="Copy từ mẫu cũ">
+                        </SweetSoft:ExtraButton>
+                        <div class="btn-group" id="btnPrintGroup" runat="server" visible="false">
+                            <button data-toggle="dropdown" class="btn btn-warning  btn-xs dropdown-toggle" style="font-size: 15px;" aria-expanded="false">
+                                <span class="ace-icon fa fa-print"></span>In ấn
+													<span class="ace-icon fa fa-caret-down icon-on-right"></span>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li>
+                                    <asp:LinkButton ID="lnkInPhieuTiepNhanYC" runat="server" OnClick="lnkPrint_Onclick" CommandArgument="1" OnClientClick="document.forms[0].target = '_blank';">
+                                        <span class="ace-icon fa fa-print"></span> Phiếu tiếp nhận yêu cầu
+                                    </asp:LinkButton>
+                                </li>
+<<<<<<< HEAD
+                                <li class="divider"></li>
+                                <li>
+                                    <asp:LinkButton ID="lnkPhieuChuyenMau" Visible="false" runat="server" OnClick="lnkPrint_Onclick" CommandArgument="2">
+                                        <span class="ace-icon fa fa-print"></span> Phiếu chuyển mẫu
+                                    </asp:LinkButton>
+                                </li>
+=======
+                                <%--<li class="divider"></li>
+                                <li>
+                                    <asp:LinkButton ID="lnkPhieuChuyenMau" runat="server" OnClick="lnkPrint_Onclick" CommandArgument="2">
+                                        <span class="ace-icon fa fa-print"></span> Phiếu chuyển mẫu
+                                    </asp:LinkButton>
+                                </li>--%>
+>>>>>>> 690cbf0e7e387c1441f0b8d35d398be77213e3da
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-default  btn-xs dropdown-toggle" style="font-size: 15px;" aria-expanded="false">
+<<<<<<< HEAD
+                                <span class="ace-icon fa fa-plus"></span>Thêm mẫu XN
+=======
+                                <span class="ace-icon fa fa-plus"></span>Tạo mẫu mới
+>>>>>>> 690cbf0e7e387c1441f0b8d35d398be77213e3da
+													<span class="ace-icon fa fa-caret-down icon-on-right"></span>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-inverse">
+                                <li>
+                                    <asp:LinkButton ID="lnkAddSingle" runat="server" OnClick="btnAddNew_Click">
+                                        <span class="ace-icon fa fa-plus"></span> Tạo mẫu mới
+                                    </asp:LinkButton>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <asp:LinkButton ID="lnkCopySingle" runat="server" OnClick="btnAddNew_Click">
+<<<<<<< HEAD
+                                        <span class="ace-icon fa fa-clone"></span>Tạo mẫu mới từ mẫu cũ
+=======
+                                        <span class="ace-icon fa fa-clone"></span> Copy từ mẫu cũ
+>>>>>>> 690cbf0e7e387c1441f0b8d35d398be77213e3da
+                                    </asp:LinkButton>
+                                </li>
+                            </ul>
+                        </div>
+                        <SweetSoft:ExtraButton ID="btnSave" EStyle="Success" CssClass="btn-xs" runat="server" EIcon="A_Save" Text="Lưu mẫu" OnClick="btnSave_Click">
+                        </SweetSoft:ExtraButton>
+<<<<<<< HEAD
+                        <SweetSoft:ExtraButton ID="btnChuyenLabo" Visible="false" EStyle="Primary" CssClass="btn-xs" runat="server" EIcon="A_Send" Text="Chuyển mẫu" OnClick="btnChuyenLabo_Click">
+                        </SweetSoft:ExtraButton>
+=======
+>>>>>>> 690cbf0e7e387c1441f0b8d35d398be77213e3da
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="tab-content">
+                        <div id="thongTin" class='<%= GetTabVisible("ThongTin","tab-pane") %>'>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Khách hàng</span>
+                                        <SweetSoft:ExtraTextBox ID="txtTenKhachHang" runat="server" PlaceHolder="Tên khách hàng"></SweetSoft:ExtraTextBox>
+                                        <asp:HiddenField ID="hiddenKhachHangID" runat="server" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Địa chỉ khách</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDiaChiKhach" runat="server" PlaceHolder="Địa chỉ khách hàng"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Điện thoại</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDienThoaiKhach" runat="server" PlaceHolder="Điện thoại khách"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Email khách</span>
+                                        <SweetSoft:ExtraTextBox ID="txtEmailKhach" runat="server" PlaceHolder="Email khách hàng"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Tên người gửi</span>
+                                        <div>
+                                            <SweetSoft:ExtraTextBox ID="txtTenNguoiGui" runat="server" ValidStyle="Tooltip" PlaceHolder="Tên người gửi"></SweetSoft:ExtraTextBox>
+                                            <span class="input-group-btn" style="display: none; padding: 2px; border: solid 1px #c1c1c1; background-color: #a7a7a7;">
+                                                <SweetSoft:ExtraCheckBox ID="chkNguoiGuiLaNV" runat="server"></SweetSoft:ExtraCheckBox>
+                                                <span style="font-size: 13px; color: white;">Nhân viên Pasteur</span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Địa chỉ người gửi</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDiaChiNguoiGui" runat="server" PlaceHolder="Địa chỉ người gửi"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Điện thoại người gửi mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDienThoaiNguoiGui" runat="server" PlaceHolder="Điện thoại người gửi mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Email người gửi mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtEmailNguoiGui" runat="server" PlaceHolder="Email người gửi mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Tên người lấy mẫu</span>
+                                        <div>
+                                            <SweetSoft:ExtraTextBox ID="txtTenNguoiLayMau" runat="server" ValidStyle="Tooltip" PlaceHolder="Tên người lấy mẫu"></SweetSoft:ExtraTextBox>
+                                            <span class="input-group-btn" style="display: none; padding: 2px; border: solid 1px #c1c1c1; background-color: #a7a7a7;">
+                                                <SweetSoft:ExtraCheckBox ID="chkNguoiLayLaNV" runat="server"></SweetSoft:ExtraCheckBox>
+                                                <span style="font-size: 13px; color: white;">Nhân viên Pasteur</span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Ngày lấy mẫu</span>
+                                        <SweetSoft:ExtraDateTimePicker ID="dtNgayLayMau" runat="server" DateTimeMask="Date" PlaceHolder="Ngày lấy mẫu" Width="100%" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Loại mẫu</span>
+                                        <SweetSoft:ExtraComboBox ID="cbLoaiMau" runat="server" EmptyMessage="Chọn loại mẫu"></SweetSoft:ExtraComboBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Điện thoại người lấy mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDienThoaiNguoiLayMau" runat="server" PlaceHolder="Điện thoại người lấy mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Email người lấy mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtEmailNguoiLayMau" runat="server" PlaceHolder="Email người lấy mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Tên người nhận mẫu</span>
+                                        <div>
+                                            <SweetSoft:ExtraTextBox ID="txtTenNguoiNhanMau" runat="server" ValidStyle="Tooltip" PlaceHolder="Tên người nhận mẫu"></SweetSoft:ExtraTextBox>
+                                            <span class="input-group-btn" style="display: none; padding: 2px; border: solid 1px #c1c1c1; background-color: #a7a7a7;">
+                                                <SweetSoft:ExtraCheckBox ID="chkNguoiNhanLaNV" runat="server"></SweetSoft:ExtraCheckBox>
+                                                <span style="font-size: 13px; color: white;">Nhân viên Pasteur</span>
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Ngày nhận mẫu</span>
+                                        <SweetSoft:ExtraDateTimePicker ID="dateNgayNhanMau" DateTimeMask="Date" runat="server" PlaceHolder="Ngày nhận mẫu" Width="100%" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Quy chuẩn</span>
+                                        <SweetSoft:ExtraComboBox ID="cbQUyChuan" runat="server" ComboStyle="Warning" EmptyMessage="Chọn quy chuẩn"></SweetSoft:ExtraComboBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Điện thoại người nhận mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDienThoaiNguoiNhan" runat="server" PlaceHolder="Điện thoại người nhận mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Email người nhận mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtEmailNguoiNhanMau" runat="server" PlaceHolder="Email người nhận mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Yêu cầu khác</span>
+                                        <SweetSoft:ExtraTextBox ID="txtYeuCauKhac" runat="server" PlaceHolder="Nhập yêu cầu khác"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Ngày trả kết quả</span>
+                                        <SweetSoft:ExtraDateTimePicker ID="dateNgayTraKetQua" DateTimeMask="Date" runat="server" PlaceHolder="Ngày trả kết quả" Width="100%" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Loại hình yêu cầu</span>
+                                        <SweetSoft:ExtraComboBox ID="cbTrangThaiMau" Visible="false" runat="server" ComboStyle="Success">
+                                            <asp:ListItem Value="New" Text="Tạo mới"></asp:ListItem>
+                                            <asp:ListItem Value="Labo" Text="Đã chuyển Labo"></asp:ListItem>
+                                            <asp:ListItem Value="DangThucHien" Text="Đang thực hiện Labo"></asp:ListItem>
+                                            <asp:ListItem Value="ChoTraKetQua" Text="Chờ trả kết quả"></asp:ListItem>
+                                            <asp:ListItem Value="DaTraKetQua" Text="Đã trả kết quả"></asp:ListItem>
+                                            <asp:ListItem Value="Huy" Text="Hủy"></asp:ListItem>
+                                        </SweetSoft:ExtraComboBox>
+                                        <SweetSoft:ExtraComboBox ID="cbLoaiHinhYeuCauMau" runat="server" ComboStyle="Success">
+                                        </SweetSoft:ExtraComboBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-xs-12 no-padding-right">
+                                    <div class="form-group">
+                                        <span class="extra-label">T/Lượng mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDungLuongMau" runat="server" PlaceHolder="Dung lượng mẫu" ValidationType="Currency" Text="0"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-xs-12  no-padding-right">
+                                    <div class="form-group">
+                                        <span class="extra-label">T/Lượng Hóa</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDungLuongMauHoa" runat="server" PlaceHolder="Dung lượng mẫu hóa" Text="0" ValidationType="Currency"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Đơn vị tính</span>
+                                        <SweetSoft:ExtraComboBox ID="cbDonViTinh" runat="server" EmptyMessage="Chọn đơn vị tính"></SweetSoft:ExtraComboBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Điều kiện bảo quản</span>
+                                        <SweetSoft:ExtraTextBox ID="txtDieuKienBaoQuan" runat="server" PlaceHolder="Điều kiện bảo quản"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Mô tả mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtMoTaMau" runat="server" PlaceHolder="Mô tả mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-xs-12">
+                                    <div class="form-group">
+                                        <span class="extra-label">Nơi lấy mẫu</span>
+                                        <SweetSoft:ExtraTextBox ID="txtNoiLayMau" runat="server" PlaceHolder="Nơi lấy mẫu"></SweetSoft:ExtraTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="chiTieu" class='<%= GetTabVisible("ChiTieu","tab-pane") %>'>
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12">
+                                    <div class="form-group">
+                                        <SweetSoft:ExtraCheckBox ID="chkCheckSearh" runat="server" AutoPostBack="true" OnCheckedChanged="chkCheckSearh_CheckedChanged" Text="Tick chọn để tìm theo tên nhóm xét nghiệm"></SweetSoft:ExtraCheckBox>
+                                        <SweetSoft:ExtraTextBox ID="txtAddTenChiTieu" runat="server" PlaceHolder="Nhập tên chỉ tiêu cần tìm và chọn chỉ tiêu thêm vào danh sách"></SweetSoft:ExtraTextBox>
+                                        <asp:HiddenField ID="hiddenCheckSearch" runat="server" Value="ChiTieu" />
+                                        <asp:HiddenField ID="hiddenChiTieuPhuongPhapAddID" runat="server" />
+                                        <asp:HiddenField ID="hiddenChiTieuAddID" runat="server" />
+                                        <asp:HiddenField ID="hiddenNhomXNAddID" runat="server" />
+                                        <asp:Button ID="btnAddChiTieuSingle" runat="server" OnClick="btnAddChiTieuSingle_Click" Style="display: none" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-lg-12">
+                                    <div class="div-data">
+                                        <div style="float: left; width: 50%;">
+                                            <span style="margin-left: 6px; font-weight: bold;">
+                                                <SweetSoft:ExtraCheckBox ID="chAll" EnableClickGroup="true" CssClass="XAll" GroupName="XAll" runat="server"></SweetSoft:ExtraCheckBox>
+                                                Chọn tất cả</span>
+                                            <span class="control-red">
+                                                <SweetSoft:ExtraButton ID="btnDelete" runat="server" EIcon="A_Delete" Transparent="true" Text="Xóa các dòng đang chọn" OnClick="btnDelete_Click"></SweetSoft:ExtraButton>
+                                            </span>
+                                        </div>
+                                        <div style="float: right; width: 50%; text-align: right;">
+                                            <asp:Literal ID="ltrHoaSinh" runat="server"></asp:Literal>
+                                        </div>
+                                        <table class="tab-chiTieu">
+                                            <tbody>
+                                                <asp:Repeater ID="repDataFinal" runat="server" OnItemDataBound="repDataFinal_ItemDataBound">
+                                                    <ItemTemplate>
+                                                        <asp:Literal ID="LtrTRBegin" runat="server"></asp:Literal>
+                                                        <SweetSoft:ExtraCheckBox ID="chkItem" ValidationGroup="xAll" CssClass="XAll" GroupName="XAll" runat="server"></SweetSoft:ExtraCheckBox>
+                                                        <asp:Literal ID="ltrContent" runat="server"></asp:Literal>
+                                                        <asp:HiddenField runat="server" ID="hiddenItemID" />
+                                                        <asp:Repeater ID="repDataFinalSub" runat="server" OnItemDataBound="repDataFinalSub_ItemDataBound">
+                                                            <ItemTemplate>
+                                                                <asp:Literal ID="LtrTRBegin" runat="server"></asp:Literal>
+                                                                <SweetSoft:ExtraCheckBox ID="chkItemSub" ValidationGroup="xAll" CssClass="XAll" GroupName="XAll" runat="server"></SweetSoft:ExtraCheckBox>
+                                                                <asp:Literal ID="ltrContent" runat="server"></asp:Literal>
+                                                                <asp:Literal ID="LtrTREnd" runat="server"></asp:Literal>
+                                                                <asp:HiddenField runat="server" ID="hiddenItemSubID" />
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                        <asp:Literal ID="LtrTREnd" runat="server"></asp:Literal>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                                <tr>
+                                                    <td style="text-align: right; padding-right: 10px; font-weight: bold;">Tổng cộng:</td>
+                                                    <td style="text-align: right; font-weight: bold;">
+                                                        <asp:Literal ID="ltrTongTien" runat="server"></asp:Literal>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="DialogPlaceHolder" runat="server">
+    <SweetSoft:ExtraDialog ID="dialogConfig" runat="server" RestrictionZoneID="body" Size="FullScreen" HeadButtons="Close" CloseText="Đóng">
+        <HeaderTemplate>
+            <asp:Literal ID="ltrDialogSearchTitle" runat="server" Text="Danh sách chỉ tiêu ">
+            </asp:Literal>
+        </HeaderTemplate>
+        <ContentTemplate>
+            <div class="row">
+                <div class="col-lg-12 div-data">
+                    <span style="margin-left: 6px; font-weight: bold;">
+                        <SweetSoft:ExtraCheckBox ID="chkAllConfig" EnableClickGroup="true" CssClass="XAllConfig" GroupName="XAllConfig" runat="server"></SweetSoft:ExtraCheckBox>
+                        Chọn tất cả</span>
+                    <asp:Repeater ID="repDataConfig" runat="server">
+                        <ItemTemplate>
+                            <div class="search-item">
+                                <SweetSoft:ExtraCheckBox ID="chkitem" ValidationGroup="XAllConfig" CssClass="XAllConfig" GroupName="XAllConfig" runat="server"></SweetSoft:ExtraCheckBox>
+                                <span style="font-weight: bold; color: #712d94; display: inline-block;">
+                                    <%# Eval("TenTaiCacKhoa") %>
+                                </span>
+                                <span style="margin-left: 10px; display: inline-block;">[ <%# Eval("TenPhuongPhap") %>]</span>
+
+
+                                <%--<span class="span-item"><%# Eval("TenThongTu") %> </span><span class="span-item">&raquo;</span>--%>
+                                <span class="span-item"><%# Eval("TenTrongTTQD") %> </span>
+                                <span style="clear: both"></span>
+                                <asp:HiddenField ID="hiddenItemID" runat="server" Value='<%# Eval("ID") %>' />
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </ContentTemplate>
+        <FooterTemplate>
+            <SweetSoft:ExtraButton ID="btnAddConfig" runat="server" EIcon="A_Add_Square" EStyle="Success_Bold" Text="Thêm chỉ tiêu" OnClick="btnAddConfig_Click"></SweetSoft:ExtraButton>
+        </FooterTemplate>
+    </SweetSoft:ExtraDialog>
+    <SweetSoft:ExtraDialog ID="dialogCopy" runat="server" RestrictionZoneID="body" Size="Normal" HeadButtons="Close" CloseText="Đóng">
+        <HeaderTemplate>
+            Nhập mã mẫu cần copy
+        </HeaderTemplate>
+        <ContentTemplate>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label class="extra-label">Mã mẫu</label>
+                        <SweetSoft:ExtraTextBox ID="txtCopyMaMau" runat="server" PlaceHolder="Nhập mã mẫu copy"></SweetSoft:ExtraTextBox>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+        <FooterTemplate>
+            <SweetSoft:ExtraButton ID="btnCopy" runat="server" EStyle="Success_Bold" EIcon="A_Clone" Text="Đồng ý" OnClick="btnCopy_Click"></SweetSoft:ExtraButton>
+        </FooterTemplate>
+    </SweetSoft:ExtraDialog>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="StyleFScriptPlaceHolder" runat="server">
+    <script src="/scripts/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SearchFullText();
+            addRequestHanlde(SearchFullText);
+
+        });
+
+        function SetTab(tabName) {
+            $("input[type='hidden'][id$='hiddenTab']").val(tabName);
+        }
+
+        function SearchFullText(s, a) {
+            if ($("input[type='text'][id$='txtAddTenChiTieu']").length > 0) {
+                $("input[type='text'][id$='txtAddTenChiTieu']").on("focus", function () {
+                    $(this).select();
+                });
+                $("input[type='text'][id$='txtAddTenChiTieu']").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            url: "/Default.aspx/SearchChiTieuPhuongPhapByKeyWord",
+                            data: "{'key':'" + $("input[type='text'][id$='txtAddTenChiTieu']").val() + "', 'type':'" + $("input[type='hidden'][id$='hiddenCheckSearch']").val() + "'}",
+                            dataType: "json",
+                            async: true,
+                            cache: false,
+                            success: function (result) {
+                                console.log("result: ", result);
+                                response($.map(result.d.List, function (item) {
+                                    var type = $("input[type='hidden'][id$='hiddenCheckSearch']").val();
+                                    if (type === "ChiTieu") {
+                                        return {
+                                            TenTaiCacKhoa: item.TenTaiCacKhoa,
+                                            TenTrongTTQD: item.TenTrongTTQD,
+                                            TenDonVi: item.TenDonVi,
+                                            TenPhuongPhap: item.TenPhuongPhap,
+                                            TenThongTu: item.TenThongTu,
+                                            DisplayText: item.DisplayText,
+                                            DonGiaToString: item.DonGiaToString,
+                                            ID: item.Id,
+                                            IDCTPP: item.IDCTPP
+                                        };
+                                    }
+                                    return {
+                                        Ten: item.Ten,
+                                        ID: item.Id
+                                    };
+                                }));
+                            },
+                            error: function (msg) {
+
+                            }
+                        });
+                    },
+                    messages: {
+                        noResults: '',
+                        results: function () { }
+                    },
+                    focus: function (event, ui) {
+                        return false;
+                    },
+                    select: function (event, ui) {
+                        //$("input[type='text'][id$='txtAddTenChiTieu']").val(ui.item.DisplayText);
+                        //$("input[type='hidden'][id$='hiddenChiTieuAddID']").val(ui.item.ID);
+                        var type = $("input[type='hidden'][id$='hiddenCheckSearch']").val();
+                        if (type === "ChiTieu") {
+                            if (ui.item.IDCTPP != null && ui.item.IDCTPP > 0) {
+                                $("input[type='hidden'][id$='hiddenChiTieuPhuongPhapAddID']").val(ui.item.IDCTPP);
+                                $("[id$='btnAddChiTieuSingle']").click();
+                                $("input[type='text'][id$='txtAddTenChiTieu']").val("");
+                                $("input[type='text'][id$='txtAddTenChiTieu']").focus();
+                            }
+                        }
+                        else {
+                            $("input[type='hidden'][id$='hiddenChiTieuPhuongPhapAddID']").val(ui.item.ID);
+                            $("[id$='btnAddChiTieuSingle']").click();
+                            $("input[type='text'][id$='txtAddTenChiTieu']").val("");
+                            $("input[type='text'][id$='txtAddTenChiTieu']").focus();
+                        }
+                        return false;
+                    }
+                }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                    var type = $("input[type='hidden'][id$='hiddenCheckSearch']").val();
+                    if (type === "ChiTieu") {
+                        return $("<li>")
+                            .data("ui-autocomplete-item", item)
+                            .append("<div class='search-item'><div class='displaytext'><span style='font-weight:bold;color:#712d94;display:inline-block;'>" + item.TenTaiCacKhoa + '</span>' +
+                                "<span style='margin-left:10px;display:inline-block;'> [ " + item.TenPhuongPhap + "] </div>" +
+                                "<span class='span-item'> " + item.TenTrongTTQD + "</span>&raquo;" +
+                                //"<span class='span-item'> " + item.TenThongTu + "</span>&raquo;" +
+                                "<span class='span-item'> " + item.DonGiaToString + " đ" +
+                                "</div>")
+                            .appendTo(ul);
+                    } else {
+                        return $("<li>")
+                            .data("ui-autocomplete-item", item)
+                            .append("<span> " + item.Ten + "</span>")
+                            .appendTo(ul);
+                    }
+                };
+            }
+
+            $("input[type='text'][id$='txtCopyMaMau']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWord",
+                        data: "{'key':'" + $("input[type='text'][id$='txtCopyMaMau']").val() + "','column':'MaMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            console.log("result: ", result);
+                            response($.map(result.d.List, function (item) {
+                                return { MaMau: item.MaMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtCopyMaMau']").val(ui.item.MaMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.MaMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+
+            $("input[type='text'][id$='txtYeuCauKhac']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtYeuCauKhac']").val() + "','column':'YeuCauKhac'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            console.log("result: ", result);
+                            response($.map(result.d.List, function (item) {
+                                return { YeuCauKhac: item.YeuCauKhac, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtYeuCauKhac']").val(ui.item.YeuCauKhac);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.YeuCauKhac + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+
+            $("input[type='text'][id$='txtDieuKienBaoQuan']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtDieuKienBaoQuan']").val() + "','column':'DieuKienBaoQuan'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { DieuKienBaoQuan: item.DieuKienBaoQuan, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtDieuKienBaoQuan']").val(ui.item.DieuKienBaoQuan);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.DieuKienBaoQuan + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+
+
+            $("input[type='text'][id$='txtMoTaMau']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtMoTaMau']").val() + "','column':'MoTaMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { MoTaMau: item.MoTaMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtMoTaMau']").val(ui.item.MoTaMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.MoTaMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+            $("input[type='text'][id$='txtNoiLayMau']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtNoiLayMau']").val() + "','column':'NoiLayMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { NoiLayMau: item.NoiLayMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtNoiLayMau']").val(ui.item.NoiLayMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.NoiLayMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+            $("input[type='text'][id$='txtTenNguoiGui']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtTenNguoiGui']").val() + "','column':'TenNguoiGuiMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { TenNguoiGuiMau: item.TenNguoiGuiMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtTenNguoiGui']").val(ui.item.TenNguoiGuiMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.TenNguoiGuiMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+            $("input[type='text'][id$='txtTenNguoiLayMau']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtTenNguoiLayMau']").val() + "','column':'TenNguoiLayMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { TenNguoiLayMau: item.TenNguoiLayMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtTenNguoiLayMau']").val(ui.item.TenNguoiLayMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.TenNguoiLayMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+            $("input[type='text'][id$='txtTenNguoiNhanMau']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchMauXetNghiemByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtTenNguoiNhanMau']").val() + "','column':'TenNguoiNhanMau'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { TenNguoiNhanMau: item.TenNguoiNhanMau, ID: item.Id };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtTenNguoiNhanMau']").val(ui.item.TenNguoiNhanMau);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.TenNguoiNhanMau + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+            $("input[type='text'][id$='txtTenKhachHang']").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        url: "/Default.aspx/SearchKhachHangByKeyWordDistinct",
+                        data: "{'key':'" + $("input[type='text'][id$='txtTenKhachHang']").val() + "','column':'TenKhachHang'}",
+                        dataType: "json",
+                        async: true,
+                        cache: false,
+                        success: function (result) {
+                            response($.map(result.d.List, function (item) {
+                                return { TenKhachHang: item.TenKhachHang, ID: item.Id, DiaChi: item.DiaChi, DienThoai: item.DienThoai, Email: item.Email };
+                            }));
+                        },
+                        error: function (msg) {
+
+                        }
+                    });
+                },
+                messages: {
+                    noResults: '',
+                    results: function () { }
+                },
+                focus: function (event, ui) {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $("input[type='text'][id$='txtTenKhachHang']").val(ui.item.TenKhachHang);
+                    $("input[type='text'][id$='txtDiaChiKhach']").val(ui.item.DiaChi);
+                    $("input[type='text'][id$='txtDienThoaiKhach']").val(ui.item.DienThoai);
+                    $("input[type='text'][id$='txtEmailKhach']").val(ui.item.Email);
+                    $("input[type='hidden'][id$='hiddenKhachHangID']").val(ui.item.ID);
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function (ul, item) {
+                return $("<li>")
+                    .data("ui-autocomplete-item", item)
+                    .append("<a><span style='width:30px;'>" + item.TenKhachHang + '</span>' + "</a>")
+                    .appendTo(ul);
+            };
+        }
+
+    </script>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="ConfirmHeaderPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="Content6" ContentPlaceHolderID="ConfirmContentPlaceHolder" runat="server">
+</asp:Content>
+<asp:Content ID="Content7" ContentPlaceHolderID="ConfirmFooterPlaceHolder" runat="server">
+</asp:Content>

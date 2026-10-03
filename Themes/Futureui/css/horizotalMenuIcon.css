@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'pasteur';
+    src: url('/Themes/Futureui/fonts/pasteur.ttf?cg7mz8') format('truetype'), url('/Themes/Futureui/fonts/pasteur.woff?cg7mz8') format('woff'), url('/Themes/Futureui/fonts/pasteur.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="picon-"], [class*=" picon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'pasteur' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.picon-fact_check:before {
+  content: "\e900";
+}
+.picon-list_alt:before {
+  content: "\e901";
+}
+.picon-home:before {
+  content: "\e902";
+}
+.picon-eyedropper:before {
+  content: "\e90a";
+}
+.picon-calculator:before {
+  content: "\e940";
+}
+.picon-alarm:before {
+  content: "\e950";
+}
+.picon-stats-bars:before {
+  content: "\e99c";
+}
+.picon-lab:before {
+  content: "\e9aa";
+}
+.picon-list:before {
+  content: "\e9ba";
+}

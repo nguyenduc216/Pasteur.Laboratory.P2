@@ -1,0 +1,115 @@
+﻿.divFormBaoCao {
+    font-family: 'Times New Roman';
+    font-size: 14px;
+    color: black;
+    letter-spacing: 0.5px;
+}
+
+.content-report {
+    padding-top: 94px;
+    padding-left: 113px;
+    padding-right: 75px;
+    padding-bottom: 56px;
+}
+
+    .content-report input {
+        height: 26px !important;
+    }
+
+    .content-report p input.small-textbox {
+        width: 40px !important;
+    }
+
+    .content-report p input.medium-textbox {
+        width: 128px !important;
+    }
+
+    .content-report p input.large-textbox {
+        width: 270px !important;
+    }
+
+    .content-report p input.exlarge-textbox {
+        width: 100% !important;
+    }
+
+    .content-report hr {
+        border-top: 1px solid black;
+        margin-top: 1px;
+        width: 45%;
+    }
+
+    .content-report p {
+        text-indent: 0px;
+    }
+
+.table-report {
+    width: 100%;
+}
+
+    .table-report .first-col {
+        width: 30%;
+    }
+
+    .table-report .second-col {
+        width: 20%;
+    }
+
+    .table-report .third-col {
+        width: 15%;
+    }
+
+    .table-report .fourth-col {
+        width: 15%;
+    }
+
+    .table-report .fifth-col {
+        width: 20%;
+    }
+
+    .table-report .text-above {
+        margin-left: 90px;
+    }
+
+    .table-report .text-below {
+        margin-right: 96px;
+    }
+
+    .table-report .line-crossover {
+        transform: rotate(24deg);
+        width: 110%;
+        margin-left: -10px;
+        margin-top: 18px;
+    }
+
+    .table-report .cell-content {
+        padding-left: 5px;
+    }
+
+.table-bordered {
+    border: 1px solid black !important;
+}
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid black !important;
+    }
+
+page[size="A4"] {
+    background: white;
+    width: 21cm;
+    height: 29.7cm;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+.sum-text {
+    font-style: italic;
+}
+
+@media print {
+    body, page[size="A4"] {
+        margin: 0;
+        box-shadow: 0;
+    }
+}

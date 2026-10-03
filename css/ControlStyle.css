@@ -1,0 +1,64 @@
+﻿a.btn i.right::before {
+    margin: 0 0 0 6px;
+}
+
+a.btn i.left::before {
+    display: inline-block;
+    margin: 0 6px 0 0;
+    min-width: 16px;
+}
+
+.btn-group > a.btn > i.left::before, .input-group-addon + a.btn > i.left::before {
+    margin: 0px -7px 0px 0px;
+}
+
+select[visibled='hidden'] + .btn-group.bootstrap-select {
+    display: none;
+}
+
+a.btn.btn-transparent {
+    background-color: transparent !important;
+    border: 0px !important;
+}
+
+    a.btn.btn-transparent.text-black {
+        color: black !important;
+    }
+
+    a.btn.btn-transparent:hover {
+        background-color: transparent !important;
+        border: 0px !important;
+        font-weight: bold;
+    }
+
+        a.btn.btn-transparent:hover span {
+            text-decoration: underline;
+        }
+
+.bootstrap-dialog-header {
+    color: #4e8080;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+input.password + i.fa-gear {
+    color: #428bca;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.5;
+    position: absolute;
+    right: 20px;
+    top: 28px;
+}
+
+.fa-gear:hover {
+    opacity: 1;
+}
+
+.dataTable i.fa-plus, .dataTable i.fa-minus {
+    cursor: pointer;
+}
+
+.text-muted span {
+    display: table-row;
+}
